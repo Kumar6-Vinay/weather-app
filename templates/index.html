@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌤️ Weather Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🌤️ Weather Dashboard</h1>
+
+    <!-- ✅ Added id="weatherForm" to make JS unique -->
+    <form id="weatherForm" method="POST">
+      <input type="text" name="city" placeholder="Enter city name" required />
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <!-- 🌦️ Weather Results -->
+    {% if weather %}
+      {% if weather.error %}
+        <p class="error">{{ weather.error }}</p>
+      {% else %}
+        <div class="weather-card">
+          <h2>{{ weather.city }}</h2>
+          <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather icon" />
+          <p class="temp">{{ weather.temp }}°C</p>
+          <p>{{ weather.desc }}</p>
+          <p>💧 Humidity: {{ weather.humidity }}%</p>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ✅ Fixed JavaScript: renamed variable to avoid re-declaration -->
+  <script>
+    const weatherForm = document.querySelector('#weatherForm');
+    weatherForm.addEventListener('submit', () => {
+      setTimeout(() => {
+        document.querySelector('.container')
+          .scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    });
+  </script>
+</body>
+</html>
