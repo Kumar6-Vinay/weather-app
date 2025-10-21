@@ -1,7 +1,6 @@
 # 🌦️ Weather Dashboard – Flask Web App
 
 A simple and elegant **Flask-based weather dashboard** that fetches real-time weather data using the **OpenWeatherMap API**.  
-This project demonstrates backend API integration, frontend templating, and live deployment — ideal for showcasing full-stack development skills.
 
 ---
 
