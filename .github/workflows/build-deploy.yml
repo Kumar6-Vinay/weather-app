@@ -11,7 +11,7 @@ on:
 jobs:
   docker-build:
     name: Build Docker image
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkput repository
