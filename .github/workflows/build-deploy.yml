@@ -1,25 +1,24 @@
-name: build and deploy 
+name: Docker build CI
 
-run-name: build and deploy MyApp
+run-name: Docker Build Image | ${{ github.ref_name}}
 
-on: 
+on:
   push:
-    branches:
+    branches: 
       - main
+  workflow_dispatch:
 
+  jobs:
+    docker-build:
+      name: Build Docker image
+      run-on: ubuntu-latest
 
-jobs: 
-  build-docker-image:
-    runs-on: ubuntu-latest
+      steps:
+        - name: Checkput repository
+          uses: actions/checkout@v4
 
-    steps: 
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v4
-        with: 
-          node-version: '20'
-
-
-      - run: docker build -t myappv5 .
-
-
+        - name: Build Docker images
+          run: |
+            echo "starting Docker build"
+            docker build -t mayapp:latest .
+            echo "Docker image build completed successfully"
