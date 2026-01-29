@@ -1,24 +1,23 @@
-name: Docker build CI
+name: Build docker image workflow
 
-run-name: Docker Build Image | ${{ github.ref_name}}
+run-name: Docker image creation | $ {{ github.ref_name }}
 
 on:
   push:
-    branches: 
-      - main
-  workflow_dispatch:
+    branches:
+    - main
 
 jobs:
-  docker-build:
-    name: Build Docker image
+  build-docker-image:
+    name: Setup node
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkput repository
+      - name: checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Docker images
-        run: |
-            echo "starting Docker build"
-            docker build -t mayapp:latest .
-            echo "Docker image build completed successfully"
+      - name: creating docker image
+        run: | 
+          echo "Image creation started."
+          docker build -t myapp5:latest .
+          echo "Image creation completed"
