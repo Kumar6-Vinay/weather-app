@@ -1,0 +1,25 @@
+name: build and deploy 
+
+run-name: build and deploy MyApp
+
+on: 
+  push:
+    branches:
+      - main
+
+
+jobs: 
+  build-docker-image:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+
+
+      - run: docker build -t myappv4 .
+
+
