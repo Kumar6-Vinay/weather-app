@@ -12,12 +12,12 @@ jobs:
     name: Setup node
     runs-on: ubuntu-latest
 
-  steps:
-    - name: checkout repository
-      uses: actions/checkout@v4
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
 
-    - name: creating docker image
-      run: | 
-        echo "Image creation started."
-        docker build -t myapp5:latest .
-        echo "Image creation completed"
+      - name: creating docker image
+        run: | 
+          echo "Image creation started."
+          docker build -t myapp5:latest .
+          echo "Image creation completed"
