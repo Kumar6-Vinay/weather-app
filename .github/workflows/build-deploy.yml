@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-docker-image:
-  - name: Setup node
+    name: Setup node
     runs-on: ubuntu-latest
 
   steps:
