@@ -9,16 +9,16 @@ on:
   workflow_dispatch:
 
 jobs:
-    docker-build:
-      name: Build Docker image
-      run-on: ubuntu-latest
+  docker-build:
+    name: Build Docker image
+    run-on: ubuntu-latest
 
-      steps:
-        - name: Checkput repository
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkput repository
+        uses: actions/checkout@v4
 
-        - name: Build Docker images
-          run: |
+      - name: Build Docker images
+        run: |
             echo "starting Docker build"
             docker build -t mayapp:latest .
             echo "Docker image build completed successfully"
