@@ -20,6 +20,6 @@ jobs:
           node-version: '20'
 
 
-      - run: docker build -t myappv4 .
+      - run: docker build -t myappv5 .
 
 
