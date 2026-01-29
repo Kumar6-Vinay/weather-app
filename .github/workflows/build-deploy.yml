@@ -8,7 +8,7 @@ on:
       - main
   workflow_dispatch:
 
-  jobs:
+jobs:
     docker-build:
       name: Build Docker image
       run-on: ubuntu-latest
