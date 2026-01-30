@@ -13,10 +13,10 @@ permissions:
 
 jobs:
   ecr-push:
-  name: building and pushing image to ECR
-  runs-on: ubuntu-latest
+    name: building and pushing image to ECR
+    runs-on: ubuntu-latest
 
-  steps:
+    steps:
     - name: chekout repository
       uses: actions/checkout@v4 
     
