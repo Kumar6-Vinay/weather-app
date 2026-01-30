@@ -9,16 +9,15 @@ on:
 
 jobs:
   build-image:
-  name: Docker image creation
-  runs-on: ubuntu-latest
+    name: Docker image creation
+    runs-on: ubuntu-latest
   
-  steps:
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v4
 
-  - name: checkout repositoty
-    uses: actions/checkout@4
-
-  - name: Creating Docker image
-    runs: |
-      echo "Image creation started"
-      docker build -t myapp6 .
-      echo "Image creation completed"
+    - name: Creating Docker image
+      run: |
+        echo "Image creation started"
+        docker build -t myapp6 .
+        echo "Image creation completed"
