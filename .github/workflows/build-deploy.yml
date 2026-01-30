@@ -19,5 +19,8 @@ jobs:
     - name: creating image
       run: |
         echo "Image creation started"
-        docker build -t myapp7 .
+        docker build -t myapp8 .
         echo "image creation completed"
+
+    - name: uplaod docker images
+      uses: actions/upload-artifact@v4
