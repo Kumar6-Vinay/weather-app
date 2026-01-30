@@ -1,23 +1,22 @@
-name: Build Docker Images
+name: Build Docker image
 
-run-name: Build Docker Image | ${{ github.ref_name }}
+run-name: Build Dokcer image | {{ github.ref_name }}
 
-on: 
+on:
   push:
-    branches:
-    - main
+    branches: [" main "]
 
 jobs:
-  build-image:
-    name: Docker image creation
-    runs-on: ubuntu-latest
-  
+  image-creation:
+    name: Docker image create
+    runs-on: unbuntu-latest
+
     steps:
-    - name: checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Creating Docker image
+    - name: creating image
       run: |
         echo "Image creation started"
-        docker build -t myapp6 .
-        echo "Image creation completed"
+        docker build -t myapp7 .
+        echo "image creation completed"
