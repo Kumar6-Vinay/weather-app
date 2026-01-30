@@ -10,11 +10,9 @@ on:
 jobs:
   build-image:
   name: Docker image creation
+  runs-on: ubuntu-latest
   
-
   steps:
-  - name: setup env
-    runs-on: ubuntu-latest
 
   - name: checkout repositoty
     uses: actions/checkout@4
