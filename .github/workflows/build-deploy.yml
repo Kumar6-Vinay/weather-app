@@ -1,26 +1,36 @@
-name: Build Docker image
-
-run-name: Build Dokcer image | ${{ github.ref_name }}
+name: Build and Push to ECR
 
 on:
   push:
-    branches:
-    - main
+    branches: [ main ]
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
-  image-creation:
-    name: Docker image create
+  ecr-push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: creating image
-      run: |
-        echo "Image creation started"
-        docker build -t myapp8 .
-        echo "image creation completed"
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
 
-    - name: uplaod docker images
-      uses: actions/upload-artifact@v4
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:latest
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
