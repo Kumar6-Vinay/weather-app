@@ -12,7 +12,7 @@ jobs:
   name: Docker image creation
   
 
-stepes:
+  steps:
   - name: setup env
     runs-on: ubuntu-latest
 
