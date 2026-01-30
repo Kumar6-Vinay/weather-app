@@ -1,10 +1,11 @@
 name: Build Docker image
 
-run-name: Build Dokcer image | {{ github.ref_name }}
+run-name: Build Dokcer image | ${{ github.ref_name }}
 
 on:
   push:
-    branches: [" main "]
+    branches:
+    - main
 
 jobs:
   image-creation:
